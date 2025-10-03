@@ -16,19 +16,20 @@ export default async function ProductsPage() {
     const response = await getProducts();
     const products = response.data || [];
 
-    return(
-        <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold mb-6">All Products</h1>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                {products.map(product => (
-                    <div key={product.id} className="border p-4 rounded shadow">
-                        <h2 className="text-xl font-semibold">{product.name}</h2>
-                        <p className="text-gray-600">{product.brand}</p>
-                        <p className="text-green-600 font-bold">{product.price}</p>
-                        <p className="text-sm text-gray-500 mt-2">{product.description}</p>
-                    </div>
-                ))}
+    return (
+        <div style={{padding: '40px', maxWidth: '1200px', margin: '0 auto'}}>
+        <h1 style={{fontSize: '32px', marginBottom: '30px'}}>All Products</h1>
+        
+        <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '20px'}}>
+            {products.map(product => (
+            <div key={product.id} style={{border: '1px solid #ddd', padding: '20px', borderRadius: '8px', boxShadow: '0 2px 4px rgba(0,0,0,0.1)'}}>
+                <h2 style={{fontSize: '20px', marginBottom: '10px'}}>{product.name}</h2>
+                <p style={{color: '#666', marginBottom: '8px'}}>{product.brand}</p>
+                <p style={{color: '#22c55e', fontSize: '18px', fontWeight: 'bold', marginBottom: '10px'}}>${product.price}</p>
+                <p style={{fontSize: '14px', color: '#888'}}>{product.description}</p>
             </div>
+            ))}
         </div>
-    )
+        </div>
+    );
 }
