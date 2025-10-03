@@ -1,5 +1,6 @@
 async function getProducts() {
-    const res = await fetch('http://localhost:4000/api/v1/products', {
+    const API_URL = process.env.API_URL || 'http://localhost:4000';
+    const res = await fetch(`${API_URL}/api/v1/products`, {
         cache: 'no-store'
     });
 
